@@ -1,4 +1,4 @@
-// Navegación: cambio de sección activa
+// Navegación: scroll suave y cambio de link activo
 const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
@@ -11,68 +11,110 @@ navLinks.forEach(link => {
   });
 });
 
-// Banner slider HOME
+// Banner slider (sin autoplay)
 const slides = document.querySelectorAll('.banner-slider .slide');
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
+const indicators = document.querySelectorAll('.carousel-indicators button');
+
 let currentSlide = 0;
+
 function showSlide(index) {
+  if (index < 0) index = slides.length - 1;
+  else if (index >= slides.length) index = 0;
+
   slides.forEach((slide, i) => {
     slide.classList.toggle('active', i === index);
   });
-}
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
-}
-setInterval(nextSlide, 5000);
 
-// POPUP CONTACTANOS
+  indicators.forEach((ind, i) => {
+    ind.classList.toggle('active', i === index);
+  });
+
+  currentSlide = index;
+}
+
+function nextSlide() {
+  showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+  showSlide(currentSlide - 1);
+}
+
+// Botones slider
+if (nextBtn && prevBtn) {
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+  });
+}
+
+// Indicadores slider
+indicators.forEach((ind, i) => {
+  ind.addEventListener('click', () => {
+    showSlide(i);
+  });
+});
+
+// Inicializar slider en primer slide
+showSlide(currentSlide);
+
+// Popup Contactanos
 const popup = document.getElementById('contact-popup');
 const btnOpenPopup = document.getElementById('btn-contact-popup');
 const btnClosePopup = document.getElementById('popup-close');
 const popupForm = document.getElementById('popup-form');
 const popupMsg = document.getElementById('popup-msg');
 
-btnOpenPopup.addEventListener('click', () => {
-  popup.classList.remove('hidden');
-  popupMsg.textContent = '';
-  popupForm.reset();
-});
-
-btnClosePopup.addEventListener('click', () => {
-  popup.classList.add('hidden');
-});
-
-popupForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const name = popupForm['popup-name'].value.trim();
-  const phone = popupForm['popup-phone'].value.trim();
-
-  if (name && phone) {
-    popupMsg.textContent = 'Gracias, pronto te contactaremos.';
+if (btnOpenPopup && popup && btnClosePopup && popupForm) {
+  btnOpenPopup.addEventListener('click', () => {
+    popup.classList.remove('hidden');
+    popupMsg.textContent = '';
     popupForm.reset();
-  } else {
-    popupMsg.textContent = 'Por favor completa todos los campos.';
-  }
-});
+  });
 
-// FORMULARIO CONTACTANOS SECCIÓN
+  btnClosePopup.addEventListener('click', () => {
+    popup.classList.add('hidden');
+  });
+
+  popupForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = popupForm['popup-name'].value.trim();
+    const phone = popupForm['popup-phone'].value.trim();
+
+    if (name && phone) {
+      popupMsg.textContent = 'Gracias, pronto te contactaremos.';
+      popupForm.reset();
+    } else {
+      popupMsg.textContent = 'Por favor completa todos los campos.';
+    }
+  });
+}
+
+// Formulario Contactanos sección
 const contactForm = document.getElementById('contact-form');
 const contactMsg = document.getElementById('contact-msg');
 
-contactForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const name = contactForm['name'].value.trim();
-  const phone = contactForm['phone'].value.trim();
+if (contactForm) {
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = contactForm['name'].value.trim();
+    const phone = contactForm['phone'].value.trim();
 
-  if (name && phone) {
-    contactMsg.textContent = 'Gracias, pronto te contactaremos.';
-    contactForm.reset();
-  } else {
-    contactMsg.textContent = 'Por favor completa todos los campos.';
-  }
-});
+    if (name && phone) {
+      contactMsg.textContent = 'Gracias, pronto te contactaremos.';
+      contactForm.reset();
+    } else {
+      contactMsg.textContent = 'Por favor completa todos los campos.';
+    }
+  });
+}
 
-// ANIMACIÓN DE ENTRADA AL HACER SCROLL (solo entrada, sin salida al scroll up)
+// Animación entrada secciones al hacer scroll (solo scroll down)
 const animatedSections = document.querySelectorAll('.animate-section');
 let lastScrollY = window.scrollY || window.pageYOffset;
 
@@ -85,17 +127,13 @@ function checkScroll() {
     const rect = section.getBoundingClientRect();
     const isVisible = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
 
-    if (scrollDown) {
-      if (isVisible) {
-        section.classList.add('visible');
-        section.classList.remove('hidden');
-      }
+    if (scrollDown && isVisible) {
+      section.classList.add('visible');
+      section.classList.remove('hidden');
     }
-    // No se oculta nada al hacer scroll hacia arriba
   });
 }
 
-// Inicializar visibilidad (para mostrar secciones ya visibles al cargar)
 window.addEventListener('load', () => {
   animatedSections.forEach(section => {
     const rect = section.getBoundingClientRect();

@@ -34,9 +34,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    width: 100%;
+    background-color: #0a2342; /* o el color que tengas */
+    z-index: 1000; /* para que esté por encima de otros elementos */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .nav-logo {
