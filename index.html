@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consultoría Profesional</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="nav-logo">ConsultoríaPro</div>
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+        <li><a href="#contactanos" class="nav-link">Contáctanos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="animate-section">
+      <div class="banner-slider">
+        <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80');"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1470&q=80');"></div>
+        <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1470&q=80');"></div>
+      </div>
+      <button id="btn-contact-popup" class="btn-primary center-btn">Contáctanos</button>
+    </section>
+
+    <section class="animate-section" id="clientes">
+      <h2>Empresas que nos han contratado</h2>
+      <div class="logo-slider">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/IBM_logo.svg" alt="IBM" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Microsoft_logo.svg" alt="Microsoft" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Google-logo.svg" alt="Google" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" />
+      </div>
+    </section>
+
+    <section id="por-que" class="animate-section">
+      <h2>¿Por qué contratarnos?</h2>
+      <div class="reason-images">
+        <img src="https://images.unsplash.com/photo-1556741533-f6acd647d2fb?auto=format&fit=crop&w=600&q=80" alt="Profesionales experimentados" />
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Soluciones innovadoras" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Resultados comprobados" />
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="animate-section">
+      <div class="servicios-banner">
+        <h1>Consultoría en Proyectos de Tecnología</h1>
+        <p>Soluciones eficientes, innovadoras y confiables para tu empresa</p>
+      </div>
+      <div class="servicios-grid">
+        <article class="servicio-item">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Consultoría TI" />
+          <h3>Consultoría TI</h3>
+          <p>Asesoría especializada en infraestructura y gestión tecnológica.</p>
+        </article>
+        <article class="servicio-item">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Gestión de Proyectos" />
+          <h3>Gestión de Proyectos</h3>
+          <p>Planificación y ejecución eficiente para el éxito de tus proyectos.</p>
+        </article>
+        <article class="servicio-item">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Innovación Tecnológica" />
+          <h3>Innovación Tecnológica</h3>
+          <p>Implementación de soluciones disruptivas para tu crecimiento.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="animate-section">
+      <h2>Nosotros</h2>
+      <p>Con más de 20 años de trayectoria en ingeniería y proyectos en Bucaramanga, Santander, brindamos soluciones profesionales y confiables adaptadas a tus necesidades.</p>
+    </section>
+
+    <!-- CONTACTANOS -->
+    <section id="contactanos" class="animate-section">
+      <h2>Contáctanos</h2>
+      <form id="contact-form">
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required />
+        <label for="phone">Teléfono:</label>
+        <input type="tel" id="phone" name="phone" required />
+        <button type="submit" class="btn-primary">Enviar</button>
+        <p id="contact-msg" class="form-message"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Políticas</h3>
+        <ul>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Site Map</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contactanos">Contáctanos</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-copy">© 2025 ConsultoríaPro. Todos los derechos reservados.</div>
+  </footer>
+
+  <!-- POPUP CONTACTO -->
+  <div id="contact-popup" class="contact-popup hidden" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+    <div class="popup-content">
+      <button id="popup-close" class="popup-close" aria-label="Cerrar popup">&times;</button>
+      <h2 id="popup-title">Contáctanos</h2>
+      <form id="popup-form">
+        <label for="popup-name">Nombre:</label>
+        <input type="text" id="popup-name" name="popup-name" required />
+        <label for="popup-phone">Teléfono:</label>
+        <input type="tel" id="popup-phone" name="popup-phone" required />
+        <button type="submit" class="btn-primary">Enviar</button>
+        <p id="popup-msg" class="form-message"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
